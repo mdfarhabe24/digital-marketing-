@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ahammed Kawser — Premium Portfolio</title>
+
+<style>
+/* =========================
+   BASIC / GLOBAL
+   ========================= */
+:root{
+  --neon:#00eaff;
+  --neon-2:#0077ff;
+  --bg:#050505;
+  --glass: rgba(255,255,255,0.04);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+  background: radial-gradient(circle at 10% 10%, rgba(0,140,255,0.04), transparent 8%),
+              radial-gradient(circle at 90% 90%, rgba(0,220,255,0.03), transparent 10%),
+              var(--bg);
+  color:#fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+
+/* =========================
+   PRELOADER
+   ========================= */
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* =========================
+   PARTICLES CANVAS (BACKGROUND)
+   ========================= */
+#particles {
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+}
+
+/* =========================
+   HEADER with signature logo + neon border
+   ========================= */
+.
+
+.
+
+.logo-svg{width:56px;height:56px;flex:0 0 56px}
+.brand h1{font-size:20px;margin:0;letter-spacing:0.6px}
+.brand p{margin:0;font-size:12px;color:rgba(255,255,255,0.7)}
+
+/* neon animated border around hero */
+.hero-card{
+  display:inline-block;
+  margin-top:20px;
+  padding:18px;
+  border-radius:20px;
+  position:relative;
+  z-index:3;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  backdrop-filter: blur(9px);
+  border:1px solid rgba(0,255,255,0.05);
+  box-shadow: 0 12px 50px rgba(0,100,255,0.06);
+}
+.neon-border{
+  position:absolute; inset:-6px; border-radius:24px; z-index:-1;
+  background:linear-gradient(90deg, rgba(0,234,255,.12), rgba(0,120,255,.12));
+  filter:blur(10px);
+  opacity:0.9;
+  animation:glow 1.6s ease-in-out infinite;
+}
+@keyframes glow{
+  0%{transform:translateY(-3px) rotate(-0.5deg)}
+  50%{transform:translateY(3px) rotate(0.8deg)}
+  100%{transform:translateY(-3px) rotate(-0.5deg)}
+}
+
+/* profile image frame */
+.profile {
+  width:140px;height:140px;border-radius:50%;
+  overflow:hidden;border:4px solid transparent;
+  background:linear-gradient(135deg,var(--neon),var(--neon-2));
+  padding:5px;
+  box-shadow:0 0 30px rgba(0,234,255,0.12), 0 0 80px rgba(0,120,255,0.05);
+}
+.profile img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;}
+
+/* =========================
+   MAIN SECTION STYLES (NEON BORDER ON EACH SECTION)
+   ========================= */
+.container{max-width:1020px;margin:0 auto;padding:18px;}
+.section{
+  position:relative;
+  margin:26px 0;
+  padding:26px;
+  border-radius:14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.03);
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+  overflow:hidden;
+}
+
+/* animated neon border around each section (subtle) */
+.section::before{
+  content:""; position:absolute; inset:-2px; z-index:-1; border-radius:18px;
+  background: linear-gradient(90deg, rgba(0,234,255,0.06), rgba(0,120,255,0.06));
+  filter: blur(6px); opacity:0.85; transform:scale(1.01);
+  transition:opacity .3s;
+}
+.section:hover::before{filter:blur(10px); opacity:1}
+
+/* Section headings */
+.section h2{color:var(--neon);margin:0 0 12px;font-size:22px;text-align:center}
+.section p{color:rgba(255,255,255,0.86);line-height:1.6}
+
+/* cards layout */
+.card-list{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.card{
+  flex:1 1 240px; min-width:200px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+  border-radius:12px; padding:16px; transition:transform .35s, box-shadow .35s;
+  border:1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+.card:hover{ transform: translateY(-10px) rotate(-1deg) scale(1.02);
+  box-shadow: 0 22px 60px rgba(0,150,255,0.12);
+}
+.card h3{margin:0 0 8px;font-size:16px}
+.card ul{margin:0;padding:0;list-style:none}
+.card li{margin:7px 0;font-size:14px;display:flex;align-items:center}
+.card li::before{content:"💠";margin-right:8px}
+
+/* badges */
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.badge{
+  padding:7px 10px;border-radius:999px;font-weight:600;
+  background:linear-gradient(90deg, rgba(0,234,255,0.12), rgba(0,120,255,0.07));
+  color:var(--neon); box-shadow:0 6px 20px rgba(0,120,255,0.06);
+}
+
+/* portfolio grid */
+.portfolio{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.portfolio-card{
+  border-radius:12px; overflow:hidden; position:relative; background:#0b0b0b;
+  border:1px solid rgba(255,255,255,0.03);
+  transition:transform .35s, box-shadow .35s;
+}
+.portfolio-card img{width:100%;height:150px;object-fit:cover;display:block}
+.portfolio-card .meta{padding:12px}
+.portfolio-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,140,255,0.09)}
+
+/* testimonial */
+.testimonial{padding:14px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02)}
+
+/* counters */
+.counter-wrap{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.counter{min-width:120px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+  padding:12px;border-radius:10px;text-align:center;border:1px solid rgba(255,255,255,0.03)}
+.counter strong{display:block;font-size:22px;color:var(--neon)}
+
+/* contact form */
+.contact-grid{display:grid;grid-template-columns:1fr 320px;gap:14px}
+@media (max-width:880px){ .contact-grid{grid-template-columns:1fr} }
+.form-card{padding:14px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
+.form-group{margin-bottom:10px}
+label{display:block;font-size:13px;margin-bottom:6px;color:rgba(255,255,255,0.86)}
+input[type=text], input[type=email], textarea{
+  width:100%; padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);
+  background:transparent;color:#fff;font-size:14px;outline:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.01);
+}
+textarea{min-height:120px;resize:vertical}
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--neon),var(--neon-2));
+  color:#001018;font-weight:700;border:none;cursor:pointer}
+.msg{padding:10px;margin-top:8px;border-radius:8px;display:none}
+.msg.success{background:linear-gradient(90deg, rgba(0,255,170,0.12), rgba(0,200,255,0.08)); color:#bff}
+.msg.error{background:linear-gradient(90deg, rgba(255,120,120,0.08), rgba(255,80,80,0.06)); color:#ffc}
+
+/* footer */
+.footer{padding:18px;text-align:center;color:rgba(255,255,255,0.6);font-size:13px}
+
+/* tiny utilities for reveal */
+.reveal{opacity:0; transform:translateY(18px) scale(.99); transition:opacity .6s ease, transform .6s ease}
+.reveal.visible{opacity:1; transform:translateY(0) scale(1)}
+
+/* small screens */
+@media (max-width:560px){
+  .brand p{display:none}
+  .profile{width:120px;height:120px}
+  .header{padding:36px 12px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="loader" aria-hidden="true"></div>
+</div>
+
+<!-- PARTICLES CANVAS -->
+<canvas id="particles"></canvas>
+
+
+        
+      
+
+    <div style="text-align:left">
+      <h1>AK Programmer</h1>
+      <p>Website Developer • Digital Creator</p>
+    </div>
+  </div>
+
+  <div class="hero-card" style="margin-left:8px; position:rights-04px;" >
+    <div class="neon-border" aria-hidden="true"></div>
+    <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center">
+      <div class="profile">
+        <img src=https://uploads.onecompiler.io/43wt7xmwa/445zy8jxk/91.jpg alt="Ahammed Kawser">
+      </div>
+      <div style="text-align:left; min-width:220px">
+        <h2 style="margin:0 0 6px 0">আহাম্মেদ কাওসার</h2>
+        <p style="margin:0;color:rgba(255,255,255,0.78)">Website Developer • Digital Creator — প্রিমিয়াম ওয়েবসাইট বানাই, যা আপনার বিক্রি বাড়ায়।</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container" role="main">
+
+  <!-- ABOUT -->
+  <section class="section reveal" id="about">
+    <h2>আমার সম্পর্কে</h2>
+    <p>আমি <strong>AK Programmer</strong>, প্রফেশনাল ওয়েব ডেভেলপার। আমি ক্লায়েন্টদের জন্য দ্রুত, সুন্দর এবং রূপান্তরকৃত ওয়েবসাইট বানাই—যা আপনার ব্র্যান্ডকে অনলাইনে শক্ত করে তোলে।</p>
+
+    <div class="card-list" style="margin-top:4px">
+      <div class="card reveal"><h3>আমরা জা বানাই</h3>
+        <ul><li>পার্সোনাল ওয়েবসাইট</li><li>বিজনেস সাইট</li><li>পোর্টফোলিও</li><li>ল্যান্ডিং পেজ</li></ul>
+      </div>
+
+      <div class="card reveal"><h3> আমাদের বিশেষ সেবা?</h3>
+        <ul><li>Ultra-Fast</li><li>SEO-Ready</li><li>Mobile First</li><li>Low Cost High Value</li></ul>
+      </div>
+
+      <div class="card reveal"><h3>scale </h3>
+        <div style="margin-top:8px" class="badges">
+          <div class="badge">HTML</div><div class="badge">CSS</div><div class="badge">Python</div><div class="badge">JS</div><div class="badge">Termux</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="section reveal" id="portfolio">
+    <h2>"portfolio-card reveal"</h2>
+    <p style="text-align:center;margin-bottom:12px;color:rgba(255,255,255,0.7)"></p>
+    <div class="portfolio">
+      <!-- realistic images from Unsplash (public) -->
+      <div class="portfolio-card reveal">
+        <img src="https://images.unsplash.com/photo-1523475496153-3d6cc9f62b6f?q=80&w=1200&auto=format&fit=crop" alt="Project 1">
+        <div class="meta">
+          <strong>Business Landings</strong>
+          <p style="margin:6px 0 0;font-size:13px;color:rgba(255,255,255,0.75)">Fast converting landing page for startups.</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal">
+        <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop" alt="Project 2">
+        <div class="meta">
+          <strong>Personal Portfolio</strong>
+          <p style="margin:6px 0 0;font-size:13px;color:rgba(255,255,255,0.75)">Modern portfolio for creatives & freelancers.</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="Project 3">
+        <div class="meta">
+          <strong>eCommerce Mock</strong>
+          <p style="margin:6px 0 0;font-size:13px;color:rgba(255,255,255,0.75)">Optimized product pages & checkout flows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section reveal" id="testimonials">
+    <h2>ক্লায়েন্ট মতামত</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px">
+      <div class="testimonial reveal">"Site delivered fast & looks premium." — <strong>John D.</strong></div>
+      <div class="testimonial reveal">"Excellent communication and quality." — <strong>Jane S.</strong></div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS / COUNTERS -->
+  <section class="section reveal" id="achieve">
+    <h2>Achievements</h2>
+    <div class="counter-wrap" style="margin-top:12px">
+      <div class="counter reveal"><strong data-target="50">0</strong><span style="display:block;margin-top:6px">Websites</span></div>
+      <div class="counter reveal"><strong data-target="30">0</strong><span style="display:block;margin-top:6px">Happy Clients</span></div>
+      <div class="counter reveal"><strong data-target="99">0</strong><span style="display:block;margin-top:6px">Satisfaction %</span></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section reveal" id="contact">
+    <h2>যোগাযোগ করুন</h2>
+    <div class="contact-grid" style="margin-top:12px">
+      <div class="form-card reveal">
+        <form id="contactForm" novalidate>
+          <div class="form-group">
+            <label>নাম</label>
+            <input type="text" id="name" placeholder="আপনার নাম" required>
+          </div>
+          <div class="form-group">
+            <label>ইমেইল</label>
+            <input type="email" id="email" placeholder="example@mail.com" required>
+          </div>
+          <div class="form-group">
+            <label>বার্তা</label>
+            <textarea id="message" placeholder="আপনার মেসেজ লিখুন..." required></textarea>
+          </div>
+          <button type="submit" class="btn">পাঠিয়ে দিন</button>
+          <div id="formMsg" class="msg" role="alert"></div>
+        </form>
+      </div>
+
+      <!-- contact details -->
+      <aside class="form-card reveal" style="display:flex;flex-direction:column;gap:12px;justify-content:center;">
+        <div><strong>Phone:</strong><div style="color:rgba(255,255,255,0.8)">01848041604</div></div>
+        <div><strong>Email:</strong><div style="color:rgba(255,255,255,0.8)">ahammedkawser@example.com</div></div>
+        <div>
+          <strong>Social</strong>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <a href="#" style="background:#1877f2;padding:8px 10px;border-radius:8px;color:white;text-decoration:none">Facebook</a>
+            <a href="#" style="background:#25D366;padding:8px 10px;border-radius:8px;color:white;text-decoration:none">WhatsApp</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">© <span id="year"></span> Ahammed Kawser — All rights reserved</footer>
+
+<!-- =========================
+   SCRIPTS
+   ========================= -->
+<script>
+/* =========================
+   Preloader hide after load
+   ========================= */
+window.addEventListener('load', function(){
+  setTimeout(()=>{ document.getElementById('preloader').classList.add('hide'); }, 600);
+  // counters start after preloader
+  startCounters();
+});
+
+/* =========================
+   Particle Background (simple canvas particles)
+   ========================= */
+(()=> {
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let w = canvas.width = innerWidth;
+  let h = canvas.height = innerHeight;
+  const num = Math.floor((w*h)/60000 * 60); // scale with screen
+  const particles = [];
+
+  function rand(min,max){ return Math.random()*(max-min)+min }
+  function resize(){ w=canvas.width=innerWidth; h=canvas.height=innerHeight; particles.length=0; for(let i=0;i<num;i++) particles.push(new Particle()) }
+  window.addEventListener('resize', resize);
+
+  function Particle(){
+    this.x = Math.random()*w;
+    this.y = Math.random()*h;
+    this.vx = rand(-0.2,0.2);
+    this.vy = rand(-0.3,0.3);
+    this.size = rand(0.6,2.8);
+    this.alpha = rand(0.05,0.35);
+    this.color = `rgba(0,234,255,${this.alpha})`;
+  }
+  Particle.prototype.update = function(){
+    this.x += this.vx;
+    this.y += this.vy;
+    if(this.x < -20) this.x = w + 20;
+    if(this.x > w + 20) this.x = -20;
+    if(this.y < -20) this.y = h + 20;
+    if(this.y > h + 20) this.y = -20;
+  };
+  Particle.prototype.draw = function(){
+    ctx.beginPath();
+    ctx.fillStyle = this.color;
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+    ctx.fill();
+  };
+
+  function drawLine(a,b){
+    const dx = a.x-b.x, dy = a.y-b.y, dist = Math.sqrt(dx*dx+dy*dy);
+    if(dist < 120){
+      ctx.strokeStyle = `rgba(0,200,255,${0.08*(1-dist/120)})`;
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+    }
+  }
+
+  function loop(){
+    ctx.clearRect(0,0,w,h);
+    for(let i=0;i<particles.length;i++){
+      particles[i].update(); particles[i].draw();
+      for(let j=i+1;j<particles.length;j++) drawLine(particles[i], particles[j]);
+    }
+    requestAnimationFrame(loop);
+  }
+
+  // init
+  for(let i=0;i<num;i++) particles.push(new Particle());
+  loop();
+})();
+
+/* =========================
+   Scroll Reveal (IntersectionObserver)
+   ========================= */
+(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.12});
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+
+/* =========================
+   Counters
+   ========================= */
+function startCounters(){
+  document.querySelectorAll('.counter strong').forEach(el=>{
+    const target = +el.getAttribute('data-target');
+    let val = 0;
+    const step = Math.max(1, Math.floor(target/80));
+    const timer = setInterval(()=>{
+      val += step;
+      if(val >= target){ el.textContent = target; clearInterval(timer); }
+      else el.textContent = val;
+    }, 22);
+  });
+}
+
+/* =========================
+   Contact form (client-side validation + fake submit)
+   ========================= */
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  const msgDiv = document.getElementById('formMsg');
+
+  // simple validation
+  if(!name || !email || !message){
+    msgDiv.textContent = "অনুগ্রহ করে সব ফিল্ড ঠিকভাবে পূরণ করুন।";
+    msgDiv.className = "msg error";
+    msgDiv.style.display = 'block';
+    return;
+  }
+  // simple email regex
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!emailRe.test(email)){
+    msgDiv.textContent = "একটি বৈধ ইমেইল দিন।";
+    msgDiv.className = "msg error";
+    msgDiv.style.display = 'block';
+    return;
+  }
+
+  // fake submit: show loading, then success (in real site you would POST to server)
+  msgDiv.style.display='block';
+  msgDiv.className='msg success';
+  msgDiv.textContent = "পাঠানো হচ্ছে...";
+  // simulate network
+  setTimeout(()=>{
+    msgDiv.textContent = "ধন্যবাদ! আপনার মেসেজ গ্রহণ করা হয়েছে। আমি দ্রুতই যোগাযোগ করব।";
+    // clear form
+    document.getElementById('contactForm').reset();
+  }, 900);
+});
+
+/* =========================
+   small helpers
+   ========================= */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* =========================
+   Accessibility: reduce animations if user prefers reduced motion
+   ========================= */
+const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+if(media.matches){
+  document.querySelectorAll('*').forEach(n=>n.style.animation='none');
+}
+</script>
+</body>
+</html>class=""
